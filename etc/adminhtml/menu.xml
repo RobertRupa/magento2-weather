@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="RobertRupa_Weather::robertrupa_weather" title="Weather" translate="title" module="RobertRupa_Weather"
+             sortOrder="20" parent="Magento_Integration::system_extensions" action="adminhtml/weather"
+             resource="RobertRupa_Weather::robertrupa_weather"/>
+    </menu>
+</config>

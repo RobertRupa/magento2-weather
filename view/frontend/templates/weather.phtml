@@ -1,0 +1,24 @@
+<?php
+/**
+ * @var $block \RobertRupa\Weather\Block\Weather
+ * @var $weather \RobertRupa\Weather\Api\Data\WeatherInterface
+ */
+$weather = $block->getLastWeather();
+?>
+<div class="weather-container">Loading weather information...</div>
+<pre><?= print_r($weather->getData(),true); ?></pre>
+
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $(function () {
+            var weatherData = $.get( "/rest/V1/weather/getlast", function(data) {
+
+            })
+                .done(function() {
+                    $('.weather-container').html('<pre>'+JSON.stringify(weatherData.responseJSON, null, 1)+'</pre>');
+                });
+        });
+    });
+</script>

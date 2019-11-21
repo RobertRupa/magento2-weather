@@ -1,0 +1,36 @@
+{
+  "name": "robertrupa/weather",
+  "description": "Weather widget using openweathermap for Magento 2",
+  "type": "magento2-module",
+  "license": [
+    "MIT"
+  ],
+  "authors": [
+    {
+      "name": "Robert Rupa",
+      "email": "office@konatsu.pl"
+    }
+  ],
+  "require": {
+    "php": "^7.1.0",
+    "magento/framework": "^102.0.0",
+    "magento/module-backend": "^101.0.0"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
+    }
+  ],
+  "keywords": [
+    "Magento 2, openweathermap, Weather"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "RobertRupa\\Weather\\": ""
+    }
+  }
+}

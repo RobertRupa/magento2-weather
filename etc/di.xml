@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="RobertRupa\Weather\Api\Data\WeatherInterface"
+                type="RobertRupa\Weather\Model\Weather" />
+
+    <preference for="RobertRupa\Weather\Api\Data\WeatherRepositoryInterface"
+                type="RobertRupa\Weather\Model\WeatherRepository" />
+
+    <preference for="RobertRupa\Weather\Api\Data\WeatherSearchResultsInterface"
+                type="RobertRupa\Weather\Model\Data\WeatherSearchResults" />
+
+    <virtualType name="WeatherGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">RobertRupa\Weather\Model\ResourceModel\Weather\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">WeatherGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="WeatherGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="weather_listing_data_source" xsi:type="string">RobertRupa\Weather\Model\ResourceModel\Weather\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="RobertRupa\Weather\Model\ResourceModel\Weather\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">robertrupa_weather</argument>
+            <argument name="resourceModel" xsi:type="string">RobertRupa\Weather\Model\ResourceModel\Weather</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="robertrupa:update-weather"
+                      xsi:type="object">RobertRupa\Weather\Console\Command\UpdateWeather</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

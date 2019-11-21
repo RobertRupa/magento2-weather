@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="robertrupa_weather" resource="default" engine="innodb" comment="robertrupa weather">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="datetime" name="date" comment="is date" nullable="false"/>
+        <column xsi:type="varchar" name="localization" comment="localization"/>
+        <column xsi:type="float" name="temp" comment="temp"/>
+        <column xsi:type="float" name="temp_min" comment="temp_min"/>
+        <column xsi:type="float" name="temp_max" comment="temp_max"/>
+        <column xsi:type="int" name="pressure" comment="pressure"/>
+        <column xsi:type="int" name="humidity" comment="humidity"/>
+        <column xsi:type="datetime" name="sunrise" comment="sunrise"/>
+        <column xsi:type="datetime" name="sunset" comment="sunset"/>
+        <column xsi:type="int" name="clouds" comment="clouds"/>
+        <column xsi:type="int" name="visibility" comment="visibility"/>
+        <column xsi:type="float" name="wind_speed" comment="wind_speed"/>
+        <column xsi:type="float" name="wind_gust" comment="wind_gust"/>
+        <column xsi:type="int" name="wind_deg" comment="wind_deg"/>
+        <column xsi:type="varchar" name="description" comment="description"/>
+        <column xsi:type="varchar" name="main" comment="main"/>
+        <column xsi:type="varchar" name="icon" comment="icon"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>
